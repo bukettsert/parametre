@@ -1,0 +1,83 @@
+<h1>Tree Data Query Panel</h1>
+<div class="query">
+    <mat-form-field>
+      <mat-label>Select Sci_Name</mat-label>
+      <mat-select [(ngModel)]="selectedSci_Name" (selectionChange)="filterTrees()">
+        <mat-option *ngFor="let option of Sci_NameOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select Condition</mat-label>
+      <mat-select [(ngModel)]="selectedCondition" (selectionChange)="filterTrees()">
+        <mat-option *ngFor="let option of ConditionOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select Collected</mat-label>
+      <mat-select [(ngModel)]="selectedCollected" (selectionChange)="filterTrees()">
+        <mat-option *ngFor="let option of CollectedOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select Crew</mat-label>
+      <mat-select [(ngModel)]="selectedCrew" (selectionChange)="filterTrees()">
+        <mat-option *ngFor="let option of CrewOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTrees()">
+        <mat-option *ngFor="let option of StatusOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" (click)="runQuery()">Ara</button>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="Sci_Name">
+    <th mat-header-cell *matHeaderCellDef> Sci_Name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.Sci_Name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Condition">
+    <th mat-header-cell *matHeaderCellDef> Tree ID </th>
+    <td mat-cell *matCellDef="let element"> {{ element.Condition }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Collected">
+    <th mat-header-cell *matHeaderCellDef> Collected </th>
+    <td mat-cell *matCellDef="let element"> {{ element.Collected | date:'mediumDate' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Crew">
+    <th mat-header-cell *matHeaderCellDef> Crew </th>
+    <td mat-cell *matCellDef="let element"> {{ element.Crew }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{ element.Status }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

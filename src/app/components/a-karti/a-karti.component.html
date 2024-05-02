@@ -1,0 +1,15 @@
+<div class="a-card">
+  <p-card header="A Kartı" [style]="{'background-color': '#f9f9f9', 'width':'360px', 'border-radius': '15px'}">
+      <ng-container>
+        <div class="content-container">
+          <p>{{ content }}</p>
+        </div>
+      </ng-container>
+      <ng-template pTemplate="footer">
+        <div class="buttons">
+          <p-button label="Ekle" icon="pi pi-plus" (click)="addData()" [disabled]="content"></p-button>
+          <p-button label="Çıkar" icon="pi pi-times" (click)="removeData()" [disabled]="!content" class="p-button-danger"></p-button>
+        </div>
+      </ng-template>
+  </p-card>
+</div>
